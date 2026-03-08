@@ -92,7 +92,7 @@ jobs:
             token=$(jq -r '.NextToken // empty' <<<"$resp")
             [ -z "$token" ] && break
           done
-          aws s3 rb s3://{{ env.S3_BUCKET }} --force
+          aws s3 rb s3://${{ env.S3_BUCKET }} --force
           
   build:
     name: "Build"
